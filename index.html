@@ -10,9 +10,11 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #8ec5fc);
             color: #2c3e50;
             text-align: center;
+            overflow-x: hidden;
+            position: relative;
         }
 
         h1, h2 {
@@ -31,16 +33,17 @@
 
         li {
             margin: 20px;
-            background-color: #ecf0f1;
+            background: rgba(236, 240, 241, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             width: 300px;
-            min-height: 250px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         li:hover {
@@ -48,84 +51,111 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
-        a {
+        a.button {
             text-decoration: none;
-            color: #3498db;
+            color: #fff;
             font-weight: 500;
+            background-color: #3498db;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        a.button:hover {
+            background-color: #2980b9;
         }
 
         p {
             color: #555;
             font-size: 14px;
-            margin-top: 10px;
+            margin-top: 0px;
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            text-align: center;
-            text-decoration: none;
-            background-color: #3498db;
-            color: #fff;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+        /* Bubble animation */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        .button:hover {
-            background-color: #2980b9;
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
         }
     </style>
 </head>
 <body>
+    <div class="bubbles">
+        <div class="bubble" style="left: 10%; animation-duration: 12s;"></div>
+        <div class="bubble" style="left: 25%; animation-duration: 10s;"></div>
+        <div class="bubble" style="left: 40%; animation-duration: 15s;"></div>
+        <div class="bubble" style="left: 55%; animation-duration: 9s;"></div>
+        <div class="bubble" style="left: 70%; animation-duration: 14s;"></div>
+        <div class="bubble" style="left: 85%; animation-duration: 11s;"></div>
+    </div>
+
     <h1>My Projects</h1>
     
     <h2>Machine Learning / AI Projects</h2>
     <ul>
         <li>
             <a href="https://github.com/IdrissPro/CompoMusique.git" class="button">Musical Composition using RNN</a>
-            <p>The goal of this project is to create music using a number of music tracks to make a recurrent neural network generate its own music!</p>
+            <p>This project aims to create music using deep learning techniques, particularly recurrent neural networks (RNNs), trained on various music tracks to generate original compositions.</p>
         </li>
         
         <li>
-            <a href="https://github.com/IdrissPro/stock_forecast" class="button">Stock forecasting </a>
-            <p>Conducting an in-depth analysis of research papers on stock market prediction, implementing and evaluating various deep learning and statistical models in Python. Leveraging TensorFlow, LSTMs, and time series analysis to enhance predictive accuracy and optimize model performance.</p>
+            <a href="https://github.com/IdrissPro/stock_forecast" class="button">Stock Forecasting</a>
+            <p>Analyzed research papers on stock market prediction, implemented deep learning and statistical models in Python using TensorFlow, LSTMs, and time series analysis to enhance predictive accuracy.</p>
         </li>
         
         <li>
-            <a href="https://github.com/SarcasticMatrix/ml-python" class="button">Client Response Prediction to Calls: Cost Optimization through Machine Learning</a>
-            <p>Implemented data formatting strategies, trained models on various data structures, and optimized algorithms for predicting outcomes in highly imbalanced classes using techniques like sampling and penalizations.</p>
+            <a href="https://github.com/SarcasticMatrix/ml-python" class="button">Client Response Prediction to Calls</a>
+            <p>Developed predictive models to classify client responses to calls, focusing on handling highly imbalanced datasets through sampling and penalty-based techniques.</p>
         </li>
     </ul>
     
     <h2>Data Visualization Projects</h2>
     <ul>
         <li>
-            <a href="https://github.com/IdrissPro/renewableEnergies" class="button">The relationships that different countries have with energy consumption</a>
-            <p>Made multiple visualizations in R to tackle the question from different perspectives (Energy availability, Energy consumption, Seriousness in the progress made towards Green Energy objectives) and interpreted them to gain more insight. Used machine learning algorithms to quantify the relationship between variables and make clustering.</p>
+            <a href="https://github.com/IdrissPro/renewableEnergies" class="button">Energy Consumption Analysis</a>
+            <p>Designed multiple visualizations in R to analyze energy consumption trends, assess progress towards green energy goals, and applied machine learning for clustering.</p>
         </li>
     </ul>
     
-    <h2>Other Programming and Maths Projects</h2>
+    <h2>Some Programming Projects</h2>
     <ul>
         <li>
             <a href="https://github.com/IdrissPro/AirbnPi.git" class="button">RoomMate Management Tasks Application</a>
-            <p>An application for roommates to organize tasks, pay rent, and landlords to check rent status. Includes features for barathons and messages for unpaid rent.</p>
+            <p>Developed an application for roommates to manage shared expenses, rent payments, and household tasks, including features like barathons and automated rent reminders.</p>
         </li>
         
         <li>
             <a href="https://github.com/IdrissPro/Maths_Projects.git" class="button">Tournament Management Program</a>
-            <p>Create and manage tournaments in different sports, save match results, and display the rankings of each participating team.</p>
+            <p>Created an application to manage tournaments across various sports, recording match results and generating team rankings dynamically.</p>
         </li>
 
-        <li>
-            <a href="https://github.com/IdrissPro/Maths_Projects.git" class="button">Maths Projects</a>
-            <p>Implementations of solutions for various school mathematical projects.</p>
-        </li>
     </ul>
 </body>
 </html>
+
 
 
 
