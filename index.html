@@ -5,23 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Idriss — AI Research / AI Safety Portfolio</title>
 
-  <!-- Uniform font (no gradients, clean + readable) -->
+  <!-- Uniform font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f7f8fb;
-      --card:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --border:#e5e7eb;
-      --shadow:0 8px 20px rgba(17,24,39,.08);
-      --primary:#2563eb;
-      --primary-hover:#1d4ed8;
-      --radius:12px;
-      --max:1050px;
+      /* Softer, warmer palette (not "hospital white") */
+      --bg: #f3f0ea;          /* warm sand */
+      --bg-2: #eee8df;        /* warm paper */
+      --card: #fbfaf7;        /* off-white */
+      --card-2: #f7f4ee;      /* subtle tint */
+      --text: #1f2937;        /* slate */
+      --muted: #6b7280;
+      --border: rgba(31,41,55,.12);
+      --shadow: 0 10px 26px rgba(31,41,55,.10);
+      --primary: #2d6cdf;     /* calm blue */
+      --primary-hover: #245bc0;
+      --radius: 14px;
+      --max: 1050px;
     }
 
     *{ box-sizing:border-box; }
@@ -29,23 +32,36 @@
     body{
       margin:0;
       font-family:"Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      background: var(--bg);
+      color: var(--text);
       line-height:1.6;
     }
 
+    /* subtle texture without gradients */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(45,108,223,.06), transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(17,24,39,.06), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(45,108,223,.04), transparent 55%);
+      pointer-events:none;
+      z-index:-1;
+    }
+
     .container{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:34px 18px 70px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 18px 70px;
     }
 
     header{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
       display:flex;
       flex-wrap:wrap;
       align-items:flex-start;
@@ -67,7 +83,6 @@
       max-width:80ch;
     }
 
-    /* Top links: simple text links (no "Projects" or "Email" buttons) */
     .top-links{
       display:flex;
       gap:10px;
@@ -76,18 +91,16 @@
       justify-content:flex-end;
       margin-top:2px;
     }
+
     .link{
-      color:var(--primary);
+      color: var(--primary);
       font-weight:500;
       text-decoration:none;
       border-bottom:1px solid transparent;
       padding-bottom:2px;
     }
-    .link:hover{
-      border-bottom-color:rgba(37,99,235,.35);
-    }
+    .link:hover{ border-bottom-color: rgba(45,108,223,.35); }
 
-    /* Nav anchors (optional) */
     .nav{
       margin-top:14px;
       display:flex;
@@ -97,16 +110,14 @@
     .pill{
       display:inline-block;
       border:1px solid var(--border);
-      background:var(--card);
-      color:var(--text);
+      background: var(--card-2);
+      color: var(--text);
       border-radius:999px;
       padding:6px 10px;
       font-size:13px;
       text-decoration:none;
     }
-    .pill:hover{
-      border-color:#d1d5db;
-    }
+    .pill:hover{ border-color: rgba(31,41,55,.22); }
 
     section{ margin-top:26px; }
 
@@ -118,14 +129,12 @@
       gap:12px;
       margin-bottom:12px;
     }
-
     h2{
       margin:0;
       font-size:18px;
       font-weight:700;
       letter-spacing:-0.01em;
     }
-
     .section-desc{
       margin:0;
       color:var(--muted);
@@ -141,11 +150,11 @@
 
     .card{
       grid-column:span 6;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
       display:flex;
       flex-direction:column;
       min-height:220px;
@@ -166,9 +175,9 @@
 
     .tag{
       font-size:12px;
-      color:var(--text);
-      background:#f3f4f6;
-      border:1px solid var(--border);
+      color: var(--text);
+      background: rgba(31,41,55,.05);
+      border: 1px solid rgba(31,41,55,.10);
       padding:4px 8px;
       border-radius:999px;
       white-space:nowrap;
@@ -176,17 +185,16 @@
 
     .card p{
       margin:10px 0 0;
-      color:var(--muted);
+      color: var(--muted);
       font-size:14px;
     }
 
     .bullets{
       margin:10px 0 0;
       padding-left:18px;
-      color:var(--muted);
+      color: var(--muted);
       font-size:14px;
     }
-
     .bullets li{ margin:6px 0; }
 
     .actions{
@@ -194,22 +202,21 @@
       padding-top:14px;
     }
 
-    /* Keep only GitHub button for projects */
+    /* Only GitHub button */
     .github-btn{
       display:inline-block;
-      background:var(--primary);
+      background: var(--primary);
       color:#fff;
       font-weight:500;
       font-size:14px;
       padding:10px 12px;
       border-radius:10px;
       text-decoration:none;
-      transition:background-color .15s ease;
+      transition: background-color .15s ease;
       text-align:center;
     }
-    .github-btn:hover{ background:var(--primary-hover); }
+    .github-btn:hover{ background: var(--primary-hover); }
 
-    /* Full-width info card */
     .wide{
       grid-column:span 12;
       min-height:auto;
@@ -224,20 +231,20 @@
     .list{
       margin:10px 0 0;
       padding-left:18px;
-      color:var(--muted);
+      color: var(--muted);
       font-size:14px;
     }
 
     .small{
       font-size:13.5px;
-      color:var(--muted);
+      color: var(--muted);
       margin:0;
     }
 
     footer{
       margin-top:36px;
       padding-top:18px;
-      border-top:1px solid var(--border);
+      border-top:1px solid rgba(31,41,55,.10);
       color:var(--muted);
       font-size:13px;
       display:flex;
@@ -264,7 +271,6 @@
           Interested in LLM evaluation, hallucination reduction, alignment metrics, and RL-based ranking optimization.
         </p>
 
-        <!-- Optional: quick anchors -->
         <nav class="nav" aria-label="On-page navigation">
           <a class="pill" href="#about">About</a>
           <a class="pill" href="#selected">Selected Research Projects</a>
@@ -276,22 +282,15 @@
         </nav>
       </div>
 
-      <!-- Keep it simple (no "Projects" or "Email" buttons) -->
       <nav class="top-links" aria-label="Top links">
         <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-        <!-- Optional plain links -->
-        <!-- <a class="link" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a> -->
-        <!-- <a class="link" href="mailto:your.email@example.com">Email</a> -->
       </nav>
     </header>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="section-head">
         <h2>About</h2>
-        <p class="section-desc">
-          A short research-style bio: what you work on, what you’re looking for, and what you’re currently exploring.
-        </p>
+        <p class="section-desc">Short research-style bio: focus, goals, and current exploration.</p>
       </div>
 
       <div class="grid">
@@ -304,8 +303,8 @@
               </p>
               <ul class="list">
                 <li><strong>Interests:</strong> alignment evaluation, robustness, reward modeling, RLHF/GRPO, interpretability (intro level), truthful QA.</li>
-                <li><strong>What I’m looking for:</strong> AI Research / AI Safety internships (research or applied research engineering).</li>
-                <li><strong>Strengths:</strong> experimental rigor, metric design, and building end-to-end evaluation pipelines.</li>
+                <li><strong>Looking for:</strong> AI Research / AI Safety internships.</li>
+                <li><strong>Strengths:</strong> metric design, experiment rigor, end-to-end evaluation pipelines.</li>
               </ul>
             </div>
 
@@ -314,7 +313,7 @@
               <div class="meta" style="margin-top:10px;">
                 <span class="tag">LLM Evaluation</span>
                 <span class="tag">RAG</span>
-                <span class="tag">Ranking / Re-ranking</span>
+                <span class="tag">Ranking</span>
                 <span class="tag">Hallucinations</span>
                 <span class="tag">Robustness</span>
                 <span class="tag">RL (GRPO)</span>
@@ -325,28 +324,24 @@
       </div>
     </section>
 
-    <!-- SELECTED RESEARCH PROJECTS -->
     <section id="selected">
       <div class="section-head">
         <h2>Selected Research Projects</h2>
-        <p class="section-desc">
-          Projects framed with a research mindset: problem → approach → evaluation → findings.
-        </p>
+        <p class="section-desc">Problem → approach → evaluation → findings (research framing).</p>
       </div>
 
       <div class="grid">
-        <!-- Replace description with your RAG work if you want -->
         <article class="card">
           <h3>RAG Evaluation Framework (Metrics + Human Review)</h3>
           <div class="meta">
             <span class="tag">Evaluation</span>
-            <span class="tag">Hallucination</span>
+            <span class="tag">Faithfulness</span>
             <span class="tag">LLM-as-a-judge</span>
           </div>
           <ul class="bullets">
-            <li><strong>Problem:</strong> Measure retrieval quality + generation faithfulness reliably.</li>
-            <li><strong>Approach:</strong> combine non-LLM metrics + judge scoring + human annotations.</li>
-            <li><strong>Outcome:</strong> actionable failure breakdown (retrieval vs generation vs prompt).</li>
+            <li><strong>Problem:</strong> measure retrieval quality + generation faithfulness.</li>
+            <li><strong>Approach:</strong> combine non-LLM metrics, judge scoring, and human review.</li>
+            <li><strong>Outcome:</strong> failure breakdown (retrieval vs generation vs prompting).</li>
           </ul>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
@@ -361,8 +356,8 @@
             <span class="tag">Baselines</span>
           </div>
           <p>
-            Literature review + implementation of deep learning and statistical baselines with careful evaluation.
-            (Tip: emphasize distribution shift / regime changes if you want a “research” framing.)
+            Literature review + implementations of deep learning and statistical baselines with careful evaluation.
+            (You can emphasize distribution shift / regime changes.)
           </p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">GitHub</a>
@@ -371,13 +366,10 @@
       </div>
     </section>
 
-    <!-- AI SAFETY & ALIGNMENT WORK -->
     <section id="safety">
       <div class="section-head">
         <h2>AI Safety & Alignment Work</h2>
-        <p class="section-desc">
-          Safety-focused experiments and tooling (even small, well-documented work here is very valuable).
-        </p>
+        <p class="section-desc">Safety-focused experiments and tooling.</p>
       </div>
 
       <div class="grid">
@@ -389,9 +381,9 @@
             <span class="tag">Reward Design</span>
           </div>
           <ul class="bullets">
-            <li><strong>Goal:</strong> optimize ranking with group-relative rewards (e.g., faithfulness / citation / safety).</li>
+            <li><strong>Goal:</strong> optimize ranking with group-relative rewards (faithfulness / citation / safety).</li>
             <li><strong>Focus:</strong> reward hacking checks + stability + ablations.</li>
-            <li><strong>Deliverable:</strong> reproducible training/eval loop + clear analysis.</li>
+            <li><strong>Deliverable:</strong> reproducible training/eval loop + analysis.</li>
           </ul>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
@@ -406,8 +398,8 @@
             <span class="tag">Adversarial</span>
           </div>
           <ul class="bullets">
-            <li><strong>Test:</strong> judge consistency under paraphrases / adversarial prompts.</li>
-            <li><strong>Measures:</strong> agreement, calibration, sensitivity to style and length.</li>
+            <li><strong>Test:</strong> consistency under paraphrases and adversarial prompts.</li>
+            <li><strong>Measures:</strong> agreement, calibration, sensitivity to style/length.</li>
             <li><strong>Result:</strong> guidelines for when judge scores are trustworthy.</li>
           </ul>
           <div class="actions">
@@ -417,26 +409,22 @@
       </div>
     </section>
 
-    <!-- EVALUATION & ROBUSTNESS -->
     <section id="eval">
       <div class="section-head">
         <h2>Evaluation & Robustness Experiments</h2>
-        <p class="section-desc">
-          Focus on failure modes, distribution shifts, and robustness checks (core AI safety signal).
-        </p>
+        <p class="section-desc">Failure modes, distribution shifts, and robustness checks.</p>
       </div>
 
       <div class="grid">
         <article class="card">
           <h3>Hallucination Taxonomy + Failure Mode Dashboard</h3>
           <div class="meta">
-            <span class="tag">Failure Modes</span>
-            <span class="tag">Dashboard</span>
             <span class="tag">Error Analysis</span>
+            <span class="tag">Tracking</span>
+            <span class="tag">Metrics</span>
           </div>
           <p>
-            Categorize errors (unsupported claims, wrong entities, missing constraints) and track them over time
-            to make model improvements measurable.
+            Categorize errors (unsupported claims, wrong entities, missing constraints) and track them over time.
           </p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
@@ -451,8 +439,7 @@
             <span class="tag">Validation</span>
           </div>
           <p>
-            Predictive modeling with a strong emphasis on evaluation: sampling strategies, penalty methods, and
-            careful metric selection (precision/recall trade-offs).
+            Predictive modeling with emphasis on evaluation: sampling strategies, penalty methods, and metric selection.
           </p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">GitHub</a>
@@ -461,24 +448,21 @@
       </div>
     </section>
 
-    <!-- RESEARCH NOTES -->
     <section id="notes">
       <div class="section-head">
         <h2>Research Notes & Replications</h2>
-        <p class="section-desc">
-          Short, high-quality writeups + minimal replications signal “research readiness” strongly.
-        </p>
+        <p class="section-desc">Short writeups + small replications.</p>
       </div>
 
       <div class="grid">
         <article class="card wide">
           <h3>Reading List (AI Safety / Alignment)</h3>
           <p>
-            Add a folder in your GitHub like <strong>/research-notes</strong> with short markdown notes:
-            key ideas, assumptions, failure modes, and proposed experiments.
+            Add a <strong>/research-notes</strong> folder with concise markdown notes: key ideas, assumptions,
+            failure modes, and proposed experiments.
           </p>
           <ul class="bullets">
-            <li>Alignment evaluation papers (truthfulness, robustness, jailbreaks)</li>
+            <li>Alignment evaluation (truthfulness, robustness, jailbreaks)</li>
             <li>RLHF / preference optimization (PPO variants, GRPO, reward modeling)</li>
             <li>Interpretability overviews + small experiments</li>
           </ul>
@@ -489,13 +473,10 @@
       </div>
     </section>
 
-    <!-- OTHER PROJECTS (DE-EMPHASIZED) -->
     <section id="other">
       <div class="section-head">
         <h2>Other Projects</h2>
-        <p class="section-desc">
-          Kept for completeness, but not the focus for AI safety roles.
-        </p>
+        <p class="section-desc">Kept for completeness, not the main focus.</p>
       </div>
 
       <div class="grid">
@@ -505,9 +486,7 @@
             <span class="tag">Sequence Modeling</span>
             <span class="tag">Deep Learning</span>
           </div>
-          <p>
-            Music generation with RNNs trained on musical sequences. Emphasis on preprocessing, training, and qualitative evaluation.
-          </p>
+          <p>Music generation with RNNs trained on musical sequences.</p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
@@ -517,12 +496,10 @@
           <h3>Energy Consumption Analysis</h3>
           <div class="meta">
             <span class="tag">R</span>
-            <span class="tag">Data Visualization</span>
+            <span class="tag">Data Viz</span>
             <span class="tag">Clustering</span>
           </div>
-          <p>
-            Visual analysis of energy consumption trends and progress toward renewable targets with clustering insights.
-          </p>
+          <p>Visual analysis of energy consumption trends and renewable targets.</p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">GitHub</a>
           </div>
@@ -534,9 +511,7 @@
             <span class="tag">App Dev</span>
             <span class="tag">Automation</span>
           </div>
-          <p>
-            Manage shared expenses, rent payments, and household tasks with reminders and simple workflows.
-          </p>
+          <p>Manage shared expenses, rent payments, and household tasks with reminders.</p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
@@ -548,9 +523,7 @@
             <span class="tag">Algorithms</span>
             <span class="tag">Rankings</span>
           </div>
-          <p>
-            Record match results and generate team rankings dynamically across multiple sports formats.
-          </p>
+          <p>Record match results and generate team rankings dynamically.</p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
@@ -558,21 +531,17 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <div class="section-head">
         <h2>Contact</h2>
-        <p class="section-desc">
-          Keep it minimal. If you don’t want email here, remove it and keep GitHub only.
-        </p>
+        <p class="section-desc">Minimal contact info.</p>
       </div>
 
       <div class="grid">
         <article class="card wide">
           <p class="small">
-            <strong>GitHub:</strong> <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">github.com/IdrissPro</a>
-            <!-- Optional -->
-            <!-- <br><strong>Email:</strong> <a class="link" href="mailto:your.email@example.com">your.email@example.com</a> -->
+            <strong>GitHub:</strong>
+            <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">github.com/IdrissPro</a>
           </p>
         </article>
       </div>
