@@ -3,281 +3,584 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idriss — Projects</title>
+  <title>Idriss — AI Research / AI Safety Portfolio</title>
 
-  <!-- Uniform font -->
+  <!-- Uniform font (no gradients, clean + readable) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #f7f8fb;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --card: #ffffff;
-      --border: #e5e7eb;
-      --shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --radius: 12px;
-      --max: 1050px;
+      --bg:#f7f8fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --shadow:0 8px 20px rgba(17,24,39,.08);
+      --primary:#2563eb;
+      --primary-hover:#1d4ed8;
+      --radius:12px;
+      --max:1050px;
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
-      margin: 0;
-      font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
+      margin:0;
+      font-family:"Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
 
     .container{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 34px 18px 70px;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:34px 18px 70px;
     }
 
     header{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 26px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
     }
 
     h1{
-      margin: 0;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      margin:0;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:-0.02em;
     }
 
     .subtitle{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 75ch;
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:80ch;
     }
 
+    /* Top links: simple text links (no "Projects" or "Email" buttons) */
     .top-links{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      margin-top:2px;
     }
-
     .link{
-      color: var(--primary);
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
+      color:var(--primary);
+      font-weight:500;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      padding-bottom:2px;
     }
     .link:hover{
-      border-bottom-color: rgba(37, 99, 235, 0.35);
+      border-bottom-color:rgba(37,99,235,.35);
     }
 
-    section{
-      margin-top: 26px;
+    /* Nav anchors (optional) */
+    .nav{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .pill{
+      display:inline-block;
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--text);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      text-decoration:none;
+    }
+    .pill:hover{
+      border-color:#d1d5db;
+    }
+
+    section{ margin-top:26px; }
+
+    .section-head{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
     }
 
     h2{
-      margin: 0 0 12px;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+
+    .section-desc{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      max-width:85ch;
     }
 
     .grid{
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
     }
 
     .card{
-      grid-column: span 6;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      min-height: 190px;
+      grid-column:span 6;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      min-height:220px;
     }
 
     .card h3{
-      margin: 0;
-      font-size: 16px;
-      font-weight: 700;
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .meta{
+      margin-top:8px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      font-size:12px;
+      color:var(--text);
+      background:#f3f4f6;
+      border:1px solid var(--border);
+      padding:4px 8px;
+      border-radius:999px;
+      white-space:nowrap;
     }
 
     .card p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
     }
+
+    .bullets{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .bullets li{ margin:6px 0; }
 
     .actions{
-      margin-top: auto;
-      padding-top: 14px;
+      margin-top:auto;
+      padding-top:14px;
     }
 
+    /* Keep only GitHub button for projects */
     .github-btn{
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 500;
-      font-size: 14px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color .15s ease;
-      text-align: center;
+      display:inline-block;
+      background:var(--primary);
+      color:#fff;
+      font-weight:500;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      transition:background-color .15s ease;
+      text-align:center;
     }
-    .github-btn:hover{
-      background: var(--primary-hover);
+    .github-btn:hover{ background:var(--primary-hover); }
+
+    /* Full-width info card */
+    .wide{
+      grid-column:span 12;
+      min-height:auto;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .small{
+      font-size:13.5px;
+      color:var(--muted);
+      margin:0;
     }
 
     footer{
-      margin-top: 36px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      margin-top:36px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     @media (max-width: 900px){
-      .card{ grid-column: span 12; }
-      h1{ font-size: 26px; }
+      .card{ grid-column:span 12; }
+      .two-col{ grid-template-columns:1fr; }
+      h1{ font-size:24px; }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <header>
+    <header id="top">
       <div>
-        <h1>My Projects</h1>
+        <h1>Idriss — AI Research / AI Safety</h1>
         <p class="subtitle">
-          A selection of projects in Machine Learning, AI, data visualization and software development.
+          I build and evaluate AI systems with a focus on reliability, robustness, and safety.
+          Interested in LLM evaluation, hallucination reduction, alignment metrics, and RL-based ranking optimization.
         </p>
+
+        <!-- Optional: quick anchors -->
+        <nav class="nav" aria-label="On-page navigation">
+          <a class="pill" href="#about">About</a>
+          <a class="pill" href="#selected">Selected Research Projects</a>
+          <a class="pill" href="#safety">AI Safety & Alignment Work</a>
+          <a class="pill" href="#eval">Evaluation & Robustness</a>
+          <a class="pill" href="#notes">Research Notes</a>
+          <a class="pill" href="#other">Other Projects</a>
+          <a class="pill" href="#contact">Contact</a>
+        </nav>
       </div>
 
-      <!-- Keep only simple links (no buttons) -->
+      <!-- Keep it simple (no "Projects" or "Email" buttons) -->
       <nav class="top-links" aria-label="Top links">
         <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-        <!-- Optional: add LinkedIn as a simple text link if you want -->
+        <!-- Optional plain links -->
         <!-- <a class="link" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a> -->
+        <!-- <a class="link" href="mailto:your.email@example.com">Email</a> -->
       </nav>
     </header>
 
-    <!-- SAME SECTIONS AS YOUR ORIGINAL PAGE -->
-    <section>
-      <h2>Machine Learning / AI Projects</h2>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p class="section-desc">
+          A short research-style bio: what you work on, what you’re looking for, and what you’re currently exploring.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card wide">
+          <div class="two-col">
+            <div>
+              <p class="small">
+                <strong>Current focus:</strong> evaluation-driven development of LLM systems (RAG, ranking, hallucination reduction),
+                and research-oriented experimentation on safety failure modes.
+              </p>
+              <ul class="list">
+                <li><strong>Interests:</strong> alignment evaluation, robustness, reward modeling, RLHF/GRPO, interpretability (intro level), truthful QA.</li>
+                <li><strong>What I’m looking for:</strong> AI Research / AI Safety internships (research or applied research engineering).</li>
+                <li><strong>Strengths:</strong> experimental rigor, metric design, and building end-to-end evaluation pipelines.</li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="small"><strong>Keywords</strong></p>
+              <div class="meta" style="margin-top:10px;">
+                <span class="tag">LLM Evaluation</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Ranking / Re-ranking</span>
+                <span class="tag">Hallucinations</span>
+                <span class="tag">Robustness</span>
+                <span class="tag">RL (GRPO)</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SELECTED RESEARCH PROJECTS -->
+    <section id="selected">
+      <div class="section-head">
+        <h2>Selected Research Projects</h2>
+        <p class="section-desc">
+          Projects framed with a research mindset: problem → approach → evaluation → findings.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- Replace description with your RAG work if you want -->
+        <article class="card">
+          <h3>RAG Evaluation Framework (Metrics + Human Review)</h3>
+          <div class="meta">
+            <span class="tag">Evaluation</span>
+            <span class="tag">Hallucination</span>
+            <span class="tag">LLM-as-a-judge</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Problem:</strong> Measure retrieval quality + generation faithfulness reliably.</li>
+            <li><strong>Approach:</strong> combine non-LLM metrics + judge scoring + human annotations.</li>
+            <li><strong>Outcome:</strong> actionable failure breakdown (retrieval vs generation vs prompt).</li>
+          </ul>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Stock Forecasting (Robustness-Oriented Time Series)</h3>
+          <div class="meta">
+            <span class="tag">Time Series</span>
+            <span class="tag">Generalization</span>
+            <span class="tag">Baselines</span>
+          </div>
+          <p>
+            Literature review + implementation of deep learning and statistical baselines with careful evaluation.
+            (Tip: emphasize distribution shift / regime changes if you want a “research” framing.)
+          </p>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- AI SAFETY & ALIGNMENT WORK -->
+    <section id="safety">
+      <div class="section-head">
+        <h2>AI Safety & Alignment Work</h2>
+        <p class="section-desc">
+          Safety-focused experiments and tooling (even small, well-documented work here is very valuable).
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Reranker Optimization with GRPO (Safety-Driven Objectives)</h3>
+          <div class="meta">
+            <span class="tag">RL</span>
+            <span class="tag">Ranking</span>
+            <span class="tag">Reward Design</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Goal:</strong> optimize ranking with group-relative rewards (e.g., faithfulness / citation / safety).</li>
+            <li><strong>Focus:</strong> reward hacking checks + stability + ablations.</li>
+            <li><strong>Deliverable:</strong> reproducible training/eval loop + clear analysis.</li>
+          </ul>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>LLM-as-a-Judge Reliability Stress Tests</h3>
+          <div class="meta">
+            <span class="tag">Evaluation</span>
+            <span class="tag">Bias</span>
+            <span class="tag">Adversarial</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Test:</strong> judge consistency under paraphrases / adversarial prompts.</li>
+            <li><strong>Measures:</strong> agreement, calibration, sensitivity to style and length.</li>
+            <li><strong>Result:</strong> guidelines for when judge scores are trustworthy.</li>
+          </ul>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EVALUATION & ROBUSTNESS -->
+    <section id="eval">
+      <div class="section-head">
+        <h2>Evaluation & Robustness Experiments</h2>
+        <p class="section-desc">
+          Focus on failure modes, distribution shifts, and robustness checks (core AI safety signal).
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Hallucination Taxonomy + Failure Mode Dashboard</h3>
+          <div class="meta">
+            <span class="tag">Failure Modes</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Error Analysis</span>
+          </div>
+          <p>
+            Categorize errors (unsupported claims, wrong entities, missing constraints) and track them over time
+            to make model improvements measurable.
+          </p>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Imbalanced Classification (Evaluation-First)</h3>
+          <div class="meta">
+            <span class="tag">Imbalanced Data</span>
+            <span class="tag">Metrics</span>
+            <span class="tag">Validation</span>
+          </div>
+          <p>
+            Predictive modeling with a strong emphasis on evaluation: sampling strategies, penalty methods, and
+            careful metric selection (precision/recall trade-offs).
+          </p>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH NOTES -->
+    <section id="notes">
+      <div class="section-head">
+        <h2>Research Notes & Replications</h2>
+        <p class="section-desc">
+          Short, high-quality writeups + minimal replications signal “research readiness” strongly.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card wide">
+          <h3>Reading List (AI Safety / Alignment)</h3>
+          <p>
+            Add a folder in your GitHub like <strong>/research-notes</strong> with short markdown notes:
+            key ideas, assumptions, failure modes, and proposed experiments.
+          </p>
+          <ul class="bullets">
+            <li>Alignment evaluation papers (truthfulness, robustness, jailbreaks)</li>
+            <li>RLHF / preference optimization (PPO variants, GRPO, reward modeling)</li>
+            <li>Interpretability overviews + small experiments</li>
+          </ul>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OTHER PROJECTS (DE-EMPHASIZED) -->
+    <section id="other">
+      <div class="section-head">
+        <h2>Other Projects</h2>
+        <p class="section-desc">
+          Kept for completeness, but not the focus for AI safety roles.
+        </p>
+      </div>
+
       <div class="grid">
         <article class="card">
           <h3>Musical Composition using RNN</h3>
+          <div class="meta">
+            <span class="tag">Sequence Modeling</span>
+            <span class="tag">Deep Learning</span>
+          </div>
           <p>
-            This project aims to create music using deep learning techniques, particularly recurrent neural networks (RNNs),
-            trained on various music tracks to generate original compositions.
+            Music generation with RNNs trained on musical sequences. Emphasis on preprocessing, training, and qualitative evaluation.
           </p>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="github-btn" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
 
-        <article class="card">
-          <h3>Stock Forecasting</h3>
-          <p>
-            Analyzed research papers on stock market prediction, implemented deep learning and statistical models in Python
-            using TensorFlow, LSTMs, and time series analysis to enhance predictive accuracy.
-          </p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Client Response Prediction to Calls</h3>
-          <p>
-            Developed predictive models to classify client responses to calls, focusing on handling highly imbalanced datasets
-            through sampling and penalty-based techniques.
-          </p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>Data Visualization Projects</h2>
-      <div class="grid">
         <article class="card">
           <h3>Energy Consumption Analysis</h3>
+          <div class="meta">
+            <span class="tag">R</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Clustering</span>
+          </div>
           <p>
-            Designed multiple visualizations in R to analyze energy consumption trends, assess progress towards green energy goals,
-            and applied machine learning for clustering.
+            Visual analysis of energy consumption trends and progress toward renewable targets with clustering insights.
           </p>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="github-btn" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
-      </div>
-    </section>
 
-    <section>
-      <h2>Some Programming Projects</h2>
-      <div class="grid">
         <article class="card">
           <h3>RoomMate Management Tasks Application</h3>
+          <div class="meta">
+            <span class="tag">App Dev</span>
+            <span class="tag">Automation</span>
+          </div>
           <p>
-            Developed an application for roommates to manage shared expenses, rent payments, and household tasks, including features
-            like barathons and automated rent reminders.
+            Manage shared expenses, rent payments, and household tasks with reminders and simple workflows.
           </p>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="github-btn" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
 
         <article class="card">
           <h3>Tournament Management Program</h3>
+          <div class="meta">
+            <span class="tag">Algorithms</span>
+            <span class="tag">Rankings</span>
+          </div>
           <p>
-            Created an application to manage tournaments across various sports, recording match results and generating team rankings dynamically.
+            Record match results and generate team rankings dynamically across multiple sports formats.
           </p>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="github-btn" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="section-desc">
+          Keep it minimal. If you don’t want email here, remove it and keep GitHub only.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card wide">
+          <p class="small">
+            <strong>GitHub:</strong> <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">github.com/IdrissPro</a>
+            <!-- Optional -->
+            <!-- <br><strong>Email:</strong> <a class="link" href="mailto:your.email@example.com">your.email@example.com</a> -->
+          </p>
         </article>
       </div>
     </section>
 
     <footer>
       <div>© <span id="year"></span> Idriss</div>
-      <div>
-        <a class="link" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
-      </div>
+      <div><a class="link" href="#top">Back to top</a></div>
     </footer>
   </div>
 
@@ -286,6 +589,7 @@
   </script>
 </body>
 </html>
+
 
 
 
