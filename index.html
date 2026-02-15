@@ -1,158 +1,441 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idriss - Projects</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #8ec5fc);
-            color: #2c3e50;
-            text-align: center;
-            overflow-x: hidden;
-            position: relative;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Idriss — Portfolio</title>
 
-        h1, h2 {
-            color: #fff;
-            margin-top: 30px;
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#111a33;
+      --panel-2:#0f1730;
+      --text:#e7ecff;
+      --muted:#a8b3d6;
+      --border:rgba(255,255,255,.10);
+      --accent:#6ea8ff;
+      --accent-2:#7ee2c8;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1080px;
+    }
 
-        li {
-            margin: 20px;
-            background: rgba(236, 240, 241, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 300px;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 15% 0%, rgba(110,168,255,.25), transparent 50%),
+                  radial-gradient(1000px 500px at 90% 10%, rgba(126,226,200,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
 
-        li:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 70px; }
 
-        a.button {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            background-color: #3498db;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-            display: block;
-            margin-bottom: 3px;
-        }
+    /* Header */
+    header{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding: 22px 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
 
-        a.button:hover {
-            background-color: #2980b9;
-        }
+    .title h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width: 62ch;
+      font-size: 14.5px;
+    }
 
-        p {
-            color: #555;
-            font-size: 14px;
-            margin-top: 0px;
-        }
+    .header-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
 
-        /* Bubble animation */
-        .bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-weight:600;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+    .btn.primary{
+      border-color: rgba(110,168,255,.45);
+      background: linear-gradient(180deg, rgba(110,168,255,.25), rgba(110,168,255,.12));
+    }
+    .btn.primary:hover{ border-color: rgba(110,168,255,.75); }
+    .btn.secondary{
+      border-color: rgba(126,226,200,.40);
+      background: linear-gradient(180deg, rgba(126,226,200,.20), rgba(126,226,200,.10));
+    }
 
-        .bubble {
-            position: absolute;
-            bottom: -50px;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
-        }
+    /* Sections */
+    section{ margin-top: 26px; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 12px;
+    }
+    h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      max-width: 70ch;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
-        }
-    </style>
+    /* Grid / Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      padding: 16px 16px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      min-height: 190px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+
+    .card-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .project-title{
+      margin:0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .project-desc{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top: 2px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      opacity: .95;
+      white-space: nowrap;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:auto;
+      padding-top: 8px;
+    }
+
+    .muted-link{
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+      border-bottom: 1px dashed rgba(168,179,214,.35);
+      padding-bottom: 1px;
+    }
+    .muted-link:hover{ color: var(--text); border-bottom-color: rgba(231,236,255,.55); }
+
+    /* Footer */
+    footer{
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+      header{ padding: 18px; }
+      .title h1{ font-size: 24px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="bubbles">
-        <div class="bubble" style="left: 10%; animation-duration: 12s;"></div>
-        <div class="bubble" style="left: 25%; animation-duration: 10s;"></div>
-        <div class="bubble" style="left: 40%; animation-duration: 15s;"></div>
-        <div class="bubble" style="left: 55%; animation-duration: 9s;"></div>
-        <div class="bubble" style="left: 70%; animation-duration: 14s;"></div>
-        <div class="bubble" style="left: 85%; animation-duration: 11s;"></div>
-    </div>
+  <div class="container">
+    <header>
+      <div class="title">
+        <h1>Idriss — Machine Learning / Data Science</h1>
+        <p>
+          Portfolio of selected projects in ML, NLP, time series and data engineering.
+          I focus on building end-to-end solutions: data → modeling → evaluation → deployment-ready code.
+        </p>
+      </div>
 
-    <h1>My Projects</h1>
-    
-    <h2>Machine Learning / AI Projects</h2>
-    <ul>
-        <li>
-            <a href="https://github.com/IdrissPro/CompoMusique.git" class="button">Musical Composition using RNN</a>
-            <p>This project aims to create music using deep learning techniques, particularly recurrent neural networks (RNNs), trained on various music tracks to generate original compositions.</p>
-        </li>
-        
-        <li>
-            <a href="https://github.com/IdrissPro/stock_forecast" class="button">Stock Forecasting</a>
-            <p>Analyzed research papers on stock market prediction, implemented deep learning and statistical models in Python using TensorFlow, LSTMs, and time series analysis to enhance predictive accuracy.</p>
-        </li>
-        
-        <li>
-            <a href="https://github.com/SarcasticMatrix/ml-python" class="button">Client Response Prediction to Calls</a>
-            <p>Developed predictive models to classify client responses to calls, focusing on handling highly imbalanced datasets through sampling and penalty-based techniques.</p>
-        </li>
-    </ul>
-    
-    <h2>Data Visualization Projects</h2>
-    <ul>
-        <li>
-            <a href="https://github.com/IdrissPro/renewableEnergies" class="button">Energy Consumption Analysis</a>
-            <p>Designed multiple visualizations in R to analyze energy consumption trends, assess progress towards green energy goals, and applied machine learning for clustering.</p>
-        </li>
-    </ul>
-    
-    <h2>Some Programming Projects</h2>
-    <ul>
-        <li>
-            <a href="https://github.com/IdrissPro/AirbnPi.git" class="button">RoomMate Management Tasks Application</a>
-            <p>Developed an application for roommates to manage shared expenses, rent payments, and household tasks, including features like barathons and automated rent reminders.</p>
-        </li>
-        
-        <li>
-            <a href="https://github.com/IdrissPro/Maths_Projects.git" class="button">Tournament Management Program</a>
-            <p>Created an application to manage tournaments across various sports, recording match results and generating team rankings dynamically.</p>
-        </li>
+      <div class="header-actions">
+        <!-- Replace with your links -->
+        <a class="btn primary" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn secondary" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:your.email@example.com">Email</a>
+        <a class="btn" href="#projects">Projects</a>
+      </div>
+    </header>
 
-    </ul>
+    <section>
+      <div class="section-head">
+        <h2>About</h2>
+        <p>
+          Briefly describe your current track (e.g., Master/Engineering), what you’re looking for (internship / full-time),
+          and your core strengths (NLP, RAG, recommender systems, time series, etc.).
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 12; min-height:auto;">
+          <p class="project-desc" style="margin:0;">
+            <strong>Currently:</strong> MSc / Engineering student (Statistics & Financial Engineering / Applied Mathematics).<br/>
+            <strong>Interests:</strong> NLP, RAG systems, ranking/re-ranking, evaluation, time series, and practical ML engineering.<br/>
+            <strong>Looking for:</strong> ML Engineer / Data Science / AI Research internship opportunities.
+          </p>
+          <div class="meta" style="margin-top:10px;">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch / TensorFlow</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Data Engineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Each project includes a short problem statement, approach, and tools used. Add a demo/report link when available.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Musical Composition using RNN</h3>
+              <div class="meta">
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Sequence Modeling</span>
+                <span class="tag">RNN</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+
+          <p class="project-desc">
+            Trained recurrent models on musical sequences to generate original compositions.
+            Focus on preprocessing, training stability and qualitative evaluation.
+          </p>
+
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">View on GitHub</a>
+            <!-- Optional: add demo/report -->
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Report / Demo</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Stock Forecasting</h3>
+              <div class="meta">
+                <span class="tag">Time Series</span>
+                <span class="tag">LSTM</span>
+                <span class="tag">Feature Engineering</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+
+          <p class="project-desc">
+            Implemented deep learning and statistical baselines for market forecasting.
+            Includes literature review, model comparison and evaluation methodology.
+          </p>
+
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Results</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Client Response Prediction to Calls</h3>
+              <div class="meta">
+                <span class="tag">Classification</span>
+                <span class="tag">Imbalanced Data</span>
+                <span class="tag">Modeling</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+
+          <p class="project-desc">
+            Built predictive models for highly imbalanced outcomes using sampling strategies and penalty-based methods.
+            Focus on precision/recall trade-offs and robust validation.
+          </p>
+
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Notebook</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Energy Consumption Analysis</h3>
+              <div class="meta">
+                <span class="tag">Data Viz</span>
+                <span class="tag">R</span>
+                <span class="tag">Clustering</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+
+          <p class="project-desc">
+            Designed visual analyses to study consumption trends and progress toward renewable targets.
+            Includes clustering and interpretation for decision-support.
+          </p>
+
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Dashboard</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Other Programming Projects</h2>
+        <p>More engineering-oriented projects. Keep descriptions outcome-driven (what it does + key features).</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Roommate Management Tasks Application</h3>
+              <div class="meta">
+                <span class="tag">App Dev</span>
+                <span class="tag">Automation</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+          <p class="project-desc">
+            Tool to manage shared expenses, rent and household tasks with reminders and simple workflows.
+          </p>
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">View on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <h3 class="project-title">Tournament Management Program</h3>
+              <div class="meta">
+                <span class="tag">Algorithms</span>
+                <span class="tag">Rankings</span>
+              </div>
+            </div>
+            <a class="muted-link" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+          <p class="project-desc">
+            Application to record match results and compute rankings dynamically across multiple sports formats.
+          </p>
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">View on GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Idriss • Built with HTML/CSS • Hosted on GitHub Pages</div>
+      <div>
+        <a class="muted-link" href="#projects">Back to projects</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
