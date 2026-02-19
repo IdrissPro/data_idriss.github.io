@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idriss — AI Research / AI Safety Portfolio</title>
+  <title>Idriss Louzi — AI Research / AI Safety Portfolio</title>
 
   <!-- Uniform font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,21 +265,11 @@
   <div class="container">
     <header id="top">
       <div>
-        <h1>Idriss — AI Research / AI Safety</h1>
+        <h1>Idriss Louzi - AI Research / AI safety</h1>
         <p class="subtitle">
-          I build and evaluate AI systems with a focus on reliability, robustness, and safety.
-          Interested in LLM evaluation, hallucination reduction, alignment metrics, and RL-based ranking optimization.
+          I build and evaluate AI systems with a focus on reliability, robustness, and safety, from research experiments to production systems
+          
         </p>
-
-        <nav class="nav" aria-label="On-page navigation">
-          <a class="pill" href="#about">About</a>
-          <a class="pill" href="#selected">Selected Research Projects</a>
-          <a class="pill" href="#safety">AI Safety & Alignment Work</a>
-          <a class="pill" href="#eval">Evaluation & Robustness</a>
-          <a class="pill" href="#notes">Research Notes</a>
-          <a class="pill" href="#other">Other Projects</a>
-          <a class="pill" href="#contact">Contact</a>
-        </nav>
       </div>
 
       <nav class="top-links" aria-label="Top links">
@@ -301,23 +291,11 @@
                 and research-oriented experimentation on safety failure modes.
               </p>
               <ul class="list">
-                <li><strong>Interests:</strong> alignment evaluation, robustness, reward modeling, RLHF/GRPO, interpretability (intro level), truthful QA.</li>
-                <li><strong>Looking for:</strong> AI Research / AI Safety internships.</li>
-                <li><strong>Strengths:</strong> metric design, experiment rigor, end-to-end evaluation pipelines.</li>
+                <li><strong>Interests:</strong> alignment evaluation, robustness, reward modeling, RLHF, interpretability, hallucinations.</li>
+                <li><strong>Looking for:</strong> AI Research / Applied AI positions.</li>
               </ul>
             </div>
 
-            <div>
-              <p class="small"><strong>Keywords</strong></p>
-              <div class="meta" style="margin-top:10px;">
-                <span class="tag">LLM Evaluation</span>
-                <span class="tag">RAG</span>
-                <span class="tag">Ranking</span>
-                <span class="tag">Hallucinations</span>
-                <span class="tag">Robustness</span>
-                <span class="tag">RL (GRPO)</span>
-              </div>
-            </div>
           </div>
         </article>
       </div>
@@ -325,27 +303,30 @@
 
     <section id="selected">
       <div class="section-head">
-        <h2>Selected Research Projects</h2>
-        <p class="section-desc">Problem → approach → evaluation → findings.</p>
+        <h2>Selected Work</h2>
       </div>
 
       <div class="grid">
         <article class="card">
-          <h3>RAG Evaluation Framework (Metrics + Human Review)</h3>
+          <h3>Allianz Chatbot (GraphRAG + RL Post-Training)</h3>
           <div class="meta">
-            <span class="tag">Evaluation</span>
-            <span class="tag">Faithfulness</span>
-            <span class="tag">LLM-as-a-judge</span>
+            <span class="tag">Research</span>
+            <span class="tag">Production</span>
+            <span class="tag">GraphRAG</span>
+            <span class="tag">RLHF</span>
+            <span class="tag">LLMOps</span>
           </div>
           <ul class="bullets">
-            <li><strong>Problem:</strong> measure retrieval quality + generation faithfulness.</li>
-            <li><strong>Approach:</strong> combine non-LLM metrics, judge scoring, and human review.</li>
-            <li><strong>Outcome:</strong> failure breakdown (retrieval vs generation vs prompting).</li>
+            <li><strong>Goal:</strong> reliable, safe answers for internal multimodal docs (OCR + LLM/VLM).</li>
+            <li><strong>Research:</strong> GraphRAG / knowledge-graph context selection (+30% top-1, +40% recall) + RL post-training under low-data constraints.</li>
+            <li><strong>Production:</strong> modular Python/PyTorch pipelines, automated eval (Reward modeling + human + llm judge), CI/CD + REST, Docker and Kubernetes on Azure.</li>
           </ul>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="github-btn" href="https://github.com/IdrissPro/" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
+      </div>
+
 
         <article class="card">
           <h3>Stock Forecasting (Robustness-Oriented Time Series)</h3>
@@ -356,7 +337,6 @@
           </div>
           <p>
             Literature review + implementations of deep learning and statistical baselines with careful evaluation.
-            (You can emphasize distribution shift / regime changes.)
           </p>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">GitHub</a>
@@ -389,62 +369,6 @@
           </div>
         </article>
 
-        <article class="card">
-          <h3>LLM-as-a-Judge Reliability Stress Tests</h3>
-          <div class="meta">
-            <span class="tag">Evaluation</span>
-            <span class="tag">Bias</span>
-            <span class="tag">Adversarial</span>
-          </div>
-          <ul class="bullets">
-            <li><strong>Test:</strong> consistency under paraphrases and adversarial prompts.</li>
-            <li><strong>Measures:</strong> agreement, calibration, sensitivity to style/length.</li>
-            <li><strong>Result:</strong> guidelines for when judge scores are trustworthy.</li>
-          </ul>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="eval">
-      <div class="section-head">
-        <h2>Evaluation & Robustness Experiments</h2>
-        <p class="section-desc">Failure modes, distribution shifts, and robustness checks.</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <h3>Hallucination Taxonomy + Failure Mode Dashboard</h3>
-          <div class="meta">
-            <span class="tag">Error Analysis</span>
-            <span class="tag">Tracking</span>
-            <span class="tag">Metrics</span>
-          </div>
-          <p>
-            Categorize errors (unsupported claims, wrong entities, missing constraints) and track them over time.
-          </p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Imbalanced Classification (Evaluation-First)</h3>
-          <div class="meta">
-            <span class="tag">Imbalanced Data</span>
-            <span class="tag">Metrics</span>
-            <span class="tag">Validation</span>
-          </div>
-          <p>
-            Predictive modeling with emphasis on evaluation: sampling strategies, penalty methods, and metric selection.
-          </p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/SarcasticMatrix/ml-python" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-      </div>
     </section>
 
     <section id="notes">
@@ -467,64 +391,6 @@
           </ul>
           <div class="actions">
             <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="other">
-      <div class="section-head">
-        <h2>Other Projects</h2>
-        <p class="section-desc">Kept for completeness, not the main focus.</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <h3>Musical Composition using RNN</h3>
-          <div class="meta">
-            <span class="tag">Sequence Modeling</span>
-            <span class="tag">Deep Learning</span>
-          </div>
-          <p>Music generation with RNNs trained on musical sequences.</p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/CompoMusique.git" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Energy Consumption Analysis</h3>
-          <div class="meta">
-            <span class="tag">R</span>
-            <span class="tag">Data Viz</span>
-            <span class="tag">Clustering</span>
-          </div>
-          <p>Visual analysis of energy consumption trends and renewable targets.</p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/renewableEnergies" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>RoomMate Management Tasks Application</h3>
-          <div class="meta">
-            <span class="tag">App Dev</span>
-            <span class="tag">Automation</span>
-          </div>
-          <p>Manage shared expenses, rent payments, and household tasks with reminders.</p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/AirbnPi.git" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Tournament Management Program</h3>
-          <div class="meta">
-            <span class="tag">Algorithms</span>
-            <span class="tag">Rankings</span>
-          </div>
-          <p>Record match results and generate team rankings dynamically.</p>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/Maths_Projects.git" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
       </div>
