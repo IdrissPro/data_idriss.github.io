@@ -302,7 +302,7 @@
             <li><strong>Production:</strong> modular Python/PyTorch pipelines, automated eval (reward modeling + human + LLM judge), CI/CD + REST, Docker/Kubernetes on Azure.</li>
           </ul>
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="github-btn" href="https://github.com/IdrissPro/chatbot-improvements" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
 
@@ -325,10 +325,31 @@
           </ul>
         
           <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="github-btn" href="https://github.com/IdrissPro/dormant-neurons" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
         
+        <article class="card">
+        <h3>MCP Server for Agentic RAG</h3>
+        <div class="meta">
+          <span class="tag">Agentic RAG</span>
+          <span class="tag">MCP</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">LangGraph</span>
+          <span class="tag">Systems</span>
+        </div>
+      
+        <ul class="bullets">
+          <li><strong>Build:</strong> implemented an MCP-compliant server to expose tools safely to LLM agents with LangChain + LangGraph integrations.</li>
+          <li><strong>Research:</strong> instrumented agent behavior and tool-selection strategies via WebSocket / JSON-RPC observability.</li>
+          <li><strong>Eval:</strong> benchmarked latency, throughput, and tool-call reliability under simulated workloads for reproducible experiments.</li>
+        </ul>
+      
+        <div class="actions">
+          <a class="github-btn" href="https://github.com/IdrissPro/MCP" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </article>
+
      <!--   <article class="card">
           <h3>Stock Forecasting (Robustness-Oriented Time Series)</h3>
           <div class="meta">
@@ -353,22 +374,28 @@
       </div>
 
       <div class="grid">
-        <article class="card">
-          <h3>Reranker Optimization with GRPO (Safety-Driven Objectives)</h3>
-          <div class="meta">
-            <span class="tag">RL</span>
-            <span class="tag">Ranking</span>
-            <span class="tag">Reward Design</span>
-          </div>
-          <ul class="bullets">
-            <li><strong>Goal:</strong> optimize ranking with group-relative rewards (faithfulness / citation / safety).</li>
-            <li><strong>Focus:</strong> reward hacking checks + stability + ablations.</li>
-            <li><strong>Deliverable:</strong> reproducible training/eval loop + analysis.</li>
-          </ul>
-          <div class="actions">
-            <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </article>
+       <article class="card">
+        <h3>Causal AI Safety with Sparse Autoencoders (SAEs) on Open LLMs (in progress)</h3>
+        <div class="meta">
+          <span class="tag">In progress</span>
+          <span class="tag">Interpretability</span>
+          <span class="tag">SAEs</span>
+          <span class="tag">Causal Interventions</span>
+          <span class="tag">Jailbreak Safety</span>
+        </div>
+      
+        <ul class="bullets">
+          <li><strong>Goal:</strong> identify interpretable latent “risk features” (e.g., jailbreak / harmful intent) in open, quantized LLMs.</li>
+          <li><strong>Method:</strong> use pretrained SAE suites to extract latent features; auto-label + cluster candidates from top-activating prompts.</li>
+          <li><strong>Interventions:</strong> suppress/steer features at inference and measure safety–utility trade-offs on a compact HarmBench-style prompt set.</li>
+          <li><strong>Deliverable:</strong> reproducible feature cards + evaluation results.</li>
+        </ul>
+      
+        <div class="actions">
+          <a class="github-btn" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </article>
+
       </div>
     </section>
 
