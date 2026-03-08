@@ -3,461 +3,437 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idriss Louzi — AI Research / AI Safety</title>
+  <title>Idriss Louzi — AI Research / AI Safety Portfolio</title>
 
+  <!-- Uniform font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f5f1ea;
-      --paper:#fcfaf6;
-      --ink:#1e1f1c;
-      --muted:#68655f;
-      --line:rgba(30,31,28,.14);
-      --accent:#234f9b;
-      --accent-soft:rgba(35,79,155,.08);
-      --max:980px;
-      --radius:10px;
+      /* Softer, warmer palette (not "hospital white") */
+      --bg: #f3f0ea;          /* warm sand */
+      --bg-2: #eee8df;        /* warm paper */
+      --card: #fbfaf7;        /* off-white */
+      --card-2: #f7f4ee;      /* subtle tint */
+      --text: #1f2937;        /* slate */
+      --muted: #6b7280;
+      --border: rgba(31,41,55,.12);
+      --shadow: 0 10px 26px rgba(31,41,55,.10);
+      --primary: #2d6cdf;     /* calm blue */
+      --primary-hover: #245bc0;
+      --radius: 14px;
+      --max: 1050px;
     }
 
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family:"IBM Plex Sans", system-ui, sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.65;
+      font-family:"Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
     }
 
-    a{color:inherit;}
-
-    .page{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:28px 20px 72px;
+    /* subtle texture without gradients */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(45,108,223,.06), transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(17,24,39,.06), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(45,108,223,.04), transparent 55%);
+      pointer-events:none;
+      z-index:-1;
     }
 
-    .topbar{
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 18px 70px;
+    }
+
+    header{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
       display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:18px;
-      padding-bottom:20px;
-      border-bottom:1px solid var(--line);
-      margin-bottom:28px;
       flex-wrap:wrap;
-    }
-
-    .kicker{
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 10px;
-    }
-
-    h1,h2,h3{
-      font-family:"Source Serif 4", Georgia, serif;
-      font-weight:700;
-      line-height:1.08;
-      letter-spacing:-0.02em;
-      margin:0;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
     }
 
     h1{
-      font-size:clamp(2.2rem, 7vw, 4.2rem);
-      max-width:10ch;
+      margin:0;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:-0.02em;
     }
 
-    .intro{
-      display:grid;
-      grid-template-columns:1.4fr .8fr;
-      gap:28px;
-      align-items:start;
-      margin-bottom:46px;
-    }
-
-    .lead{
-      font-size:1.1rem;
-      color:#2b2d29;
-      max-width:62ch;
-      margin:16px 0 0;
-    }
-
-    .lead strong{font-weight:600;}
-
-    .aside{
-      padding-top:10px;
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .aside p{margin:0 0 12px;}
-
-    .links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      font-size:14px;
-    }
-
-    .links a,
-    .inline-link{
-      text-decoration:none;
-      border-bottom:1px solid rgba(35,79,155,.35);
-      color:var(--accent);
-    }
-
-    .links a:hover,
-    .inline-link:hover{
-      border-bottom-color:var(--accent);
-    }
-
-    section{
-      margin-top:42px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-    }
-
-    .section-title{
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:18px;
-      margin-bottom:18px;
-    }
-
-    .section-title .label{
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:var(--muted);
-      padding-top:6px;
-    }
-
-    .section-title p{
+    .subtitle{
       margin:8px 0 0;
       color:var(--muted);
-      max-width:70ch;
+      font-size:15px;
+      max-width:80ch;
     }
 
-    .project-list{
+    .top-links{
       display:flex;
-      flex-direction:column;
-      gap:0;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      margin-top:2px;
     }
 
-    .project{
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:18px;
-      padding:22px 0;
-      border-top:1px solid rgba(30,31,28,.10);
+    .link{
+      color: var(--primary);
+      font-weight:500;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      padding-bottom:2px;
     }
+    .link:hover{ border-bottom-color: rgba(45,108,223,.35); }
 
-    .project:first-child{border-top:none;}
+    section{ margin-top:26px; }
 
-    .project-meta{
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .project-meta span{
-      display:block;
-      margin-bottom:6px;
-    }
-
-    .project h3{
-      font-size:1.7rem;
-      margin-bottom:8px;
-    }
-
-    .project p{
-      margin:0 0 10px;
-      max-width:68ch;
-    }
-
-    .project ul{
-      margin:10px 0 0;
-      padding-left:18px;
-      color:#3b3d39;
-    }
-
-    .project li{margin:7px 0;}
-
-    .project-links{
-      margin-top:12px;
+    .section-head{
       display:flex;
       flex-wrap:wrap;
-      gap:16px;
-      font-size:14px;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
     }
-
-    .feature{
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:20px;
-      margin-top:6px;
-    }
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-    }
-
-    .feature-note{
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .mini-list{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:18px;
-      margin-top:8px;
-    }
-
-    .mini-block{
-      padding:14px 0;
-      border-top:1px solid rgba(30,31,28,.10);
-    }
-
-    .mini-block h3{
-      font-size:1.15rem;
-      margin-bottom:6px;
-    }
-
-    .mini-block p{
+    h2{
       margin:0;
-      color:#3b3d39;
-      font-size:15px;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+    .section-desc{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      max-width:85ch;
     }
 
-    .small-list{
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      grid-column:span 6;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      min-height:220px;
+    }
+
+    .card h3{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .meta{
+      margin-top:8px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      font-size:12px;
+      color: var(--text);
+      background: rgba(31,41,55,.05);
+      border: 1px solid rgba(31,41,55,.10);
+      padding:4px 8px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .card p{
+      margin:10px 0 0;
+      color: var(--muted);
+      font-size:14px;
+    }
+
+    .bullets{
       margin:10px 0 0;
       padding-left:18px;
-      color:#3b3d39;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .bullets li{ margin:6px 0; }
+
+    .actions{
+      margin-top:auto;
+      padding-top:14px;
+    }
+
+    /* Only GitHub button */
+    .github-btn{
+      display:inline-block;
+      background: var(--primary);
+      color:#fff;
+      font-weight:500;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      transition: background-color .15s ease;
+      text-align:center;
+    }
+    .github-btn:hover{ background: var(--primary-hover); }
+
+    .wide{
+      grid-column:span 12;
+      min-height:auto;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: var(--muted);
+      font-size:14px;
+    }
+
+    .small{
+      font-size:13.5px;
+      color: var(--muted);
+      margin:0;
     }
 
     footer{
-      margin-top:48px;
+      margin-top:36px;
       padding-top:18px;
-      border-top:1px solid var(--line);
+      border-top:1px solid rgba(31,41,55,.10);
+      color:var(--muted);
+      font-size:13px;
       display:flex;
       justify-content:space-between;
-      gap:18px;
+      gap:12px;
       flex-wrap:wrap;
-      color:var(--muted);
-      font-size:14px;
     }
 
-    @media (max-width: 860px){
-      .intro,
-      .feature-grid,
-      .section-title,
-      .project,
-      .mini-list{
-        grid-template-columns:1fr;
-      }
-
-      h1{max-width:none;}
-
-      .section-title .label,
-      .project-meta{
-        padding-top:0;
-      }
+    @media (max-width: 900px){
+      .card{ grid-column:span 12; }
+      .two-col{ grid-template-columns:1fr; }
+      h1{ font-size:24px; }
     }
   </style>
 </head>
-<body>
-  <main class="page">
-    <header class="topbar">
-      <div>
-        <p class="kicker">Portfolio</p>
-        <h1>Idriss Louzi</h1>
-      </div>
-      <div class="links" aria-label="External links">
-        <a href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/idriss-louzi-568999266/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </header>
 
-    <section class="intro" id="top" style="border-top:none; padding-top:0; margin-top:0;">
+<body>
+  <div class="container">
+    <header id="top">
       <div>
-        <p class="kicker">AI research / applied systems / safety</p>
-        <p class="lead">
-          I work on <strong>LLM evaluation</strong>, <strong>retrieval quality</strong>, and <strong>model behavior under failure</strong>.
-          Most of my recent work sits in the space between research and engineering: building systems, testing them hard,
-          and trying to understand where they break.
+        <h1>Idriss Louzi - AI Research / AI Safety</h1>
+        <p class="subtitle">
+          I build and evaluate AI systems with a focus on reliability, robustness, and safety from research experiments to production systems.
         </p>
       </div>
 
-      <aside class="aside">
-        <p><strong>Current focus</strong><br>RAG evaluation, ranking, hallucination reduction, reward modeling, and safety-oriented experiments on open models.</p>
-        <p><strong>Looking for</strong><br>AI Research / Applied AI roles.</p>
-      </aside>
-    </section>
+      <nav class="top-links" aria-label="Top links">
+        <a class="link" href="https://github.com/IdrissPro" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="link" href="https://www.linkedin.com/in/idriss-louzi-568999266/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </nav>
+    </header>
 
-    <section>
-      <div class="section-title">
-        <div class="label">Selected work</div>
-        <div>
-          <h2>Projects I would want someone to open first</h2>
-          <p>The site is intentionally simple and easy to scan. I prefer showing what was built, what changed, and what was learned over decorating everything with badges.</p>
-        </div>
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
       </div>
 
-      <div class="feature">
-        <div class="feature-grid">
-          <div>
-            <p class="kicker">Featured project</p>
-            <h3>Allianz chatbot improvements</h3>
-            <p>
-              A reliability-focused RAG project for internal insurance documents, including multimodal inputs.
-              The work combined retrieval improvements, evaluation design, and production-minded system building.
-            </p>
-            <ul class="small-list">
-              <li>Extended the pipeline with GraphRAG / knowledge-graph context selection to improve retrieval relevance.</li>
-              <li>Built automated evaluation combining reward modeling, human review, and LLM-as-a-judge workflows.</li>
-              <li>Worked in a modular Python / PyTorch setup with REST services, CI/CD, Docker, Kubernetes, and Azure deployment constraints.</li>
-            </ul>
-            <div class="project-links">
-              <a class="inline-link" href="https://github.com/IdrissPro/chatbot-improvements" target="_blank" rel="noreferrer">View repository</a>
-            </div>
-          </div>
-          <div>
-            <p class="feature-note">
-              What mattered here was not just adding another RAG trick. The project was about making answers easier to trust:
-              improving context selection, reducing brittle behavior, and putting evaluation at the center of iteration.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-list">
-        <article class="project">
-          <div class="project-meta">
-            <span>Research</span>
-            <span>Deep RL</span>
-            <span>PyTorch</span>
-          </div>
-          <div>
-            <h3>Dormant neurons in deep RL</h3>
-            <p>
-              Replication and extension work around dormant neuron behavior across PPO, SAC, and DQN, with an emphasis on instrumentation and reproducibility.
-            </p>
-            <ul>
-              <li>Tracked τ-dormancy and gradient dormancy during training with lightweight custom tooling.</li>
-              <li>Implemented ReDo-style neuron recycling with targeted reinitialization, optimizer-state reset, and trigger ablations.</li>
-              <li>Measured effects on returns, stability, and feature collapse under sparse-reward and replay-heavy regimes.</li>
-            </ul>
-            <div class="project-links">
-              <a class="inline-link" href="https://github.com/IdrissPro/dormant-neurons" target="_blank" rel="noreferrer">View repository</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-meta">
-            <span>Systems</span>
-            <span>Agentic RAG</span>
-            <span>MCP</span>
-          </div>
-          <div>
-            <h3>MCP server for agentic RAG</h3>
-            <p>
-              An MCP-compliant server built to expose tools safely to LLM agents, with a strong focus on observability and reproducible evaluation.
-            </p>
-            <ul>
-              <li>Integrated with LangChain and LangGraph for tool use in agent workflows.</li>
-              <li>Added JSON-RPC and WebSocket observability to inspect tool-selection behavior and agent traces.</li>
-              <li>Benchmarked latency, throughput, and tool-call reliability under simulated workloads.</li>
-            </ul>
-            <div class="project-links">
-              <a class="inline-link" href="https://github.com/IdrissPro/MCP" target="_blank" rel="noreferrer">View repository</a>
+      <div class="grid">
+        <article class="card wide">
+          <div class="two-col">
+            <div>
+              <p class="small">
+                <strong>Current focus:</strong> evaluation-driven development of LLM systems (RAG, ranking, hallucination reduction),
+                and research-oriented experimentation on safety failure modes.
+              </p>
+              <ul class="list">
+                <li><strong>Interests:</strong> alignment evaluation, robustness, reward modeling, RLHF, interpretability, hallucinations.</li>
+                <li><strong>Looking for:</strong> AI Research / Applied AI positions.</li>
+              </ul>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section>
-      <div class="section-title">
-        <div class="label">Current direction</div>
-        <div>
-          <h2>AI safety and interpretability</h2>
-          <p>I am especially interested in methods that make model behavior more legible: identifying risky features, testing interventions, and measuring the safety–utility trade-off instead of talking about it abstractly.</p>
-        </div>
+    <section id="selected">
+      <div class="section-head">
+        <h2>Selected Work</h2>
       </div>
 
-      <article class="project">
-        <div class="project-meta">
-          <span>In progress</span>
-          <span>SAEs</span>
-          <span>Open LLMs</span>
-        </div>
-        <div>
-          <h3>Causal AI safety with sparse autoencoders</h3>
-          <p>
-            Ongoing work on using pretrained SAE suites to surface interpretable latent features associated with jailbreak or harmful intent in open, quantized language models.
-          </p>
-          <ul>
-            <li>Extract candidate latent features and cluster them from top-activating prompts.</li>
-            <li>Run suppression / steering interventions at inference time.</li>
-            <li>Measure safety gains against utility loss on a compact HarmBench-style evaluation set.</li>
+      <div class="grid">
+        <article class="card">
+          <h3>Allianz Chatbot (GraphRAG + RL Post-Training)</h3>
+          <div class="meta">
+            <span class="tag">Research</span>
+            <span class="tag">Production</span>
+            <span class="tag">GraphRAG</span>
+            <span class="tag">RLHF</span>
+            <span class="tag">LLMOps</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Goal:</strong> reliable, safe answers for internal multimodal docs (OCR + LLM/VLM).</li>
+            <li><strong>Research:</strong> GraphRAG / knowledge-graph context selection (+30% top-1, +40% recall) + RL post-training under low-data constraints.</li>
+            <li><strong>Production:</strong> modular Python/PyTorch pipelines, automated eval (reward modeling + human + LLM judge), CI/CD + REST, Docker/Kubernetes on Azure.</li>
           </ul>
-          <div class="project-links">
-            <a class="inline-link" href="https://github.com/IdrissPro/ai-safety-sae" target="_blank" rel="noreferrer">View repository</a>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/chatbot-improvements" target="_blank" rel="noreferrer">GitHub</a>
           </div>
-        </div>
-      </article>
+        </article>
+
+        <article class="card">
+          <h3>Dormant Neurons in Deep RL (Replication + ReDo Recycling)</h3>
+          <div class="meta">
+            <span class="tag">Deep RL</span>
+            <span class="tag">Research</span>
+            <span class="tag">PPO / SAC / DQN</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Reproducible</span>
+          </div>
+
+          <ul class="bullets">
+            <li><strong>Replication:</strong> reproduced + extended the dormant neuron phenomenon across PPO/SAC/DQN.</li>
+            <li><strong>Tooling:</strong> built lightweight PyTorch instrumentation to track τ-dormancy and gradient dormancy during training.</li>
+            <li><strong>Intervention:</strong> implemented ReDo-style neuron recycling (targeted reinit + optimizer-state reset) with triggers/ablations; measured impacts on returns, stability, and feature collapse under sparse rewards and replay-heavy settings.</li>
+            <li><strong>Delivery:</strong> config-driven pipeline with standardized logs + publication-ready plots/tables.</li>
+          </ul>
+
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/dormant-neurons" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>MCP Server for Agentic RAG</h3>
+          <div class="meta">
+            <span class="tag">Agentic RAG</span>
+            <span class="tag">MCP</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">Systems</span>
+          </div>
+
+          <ul class="bullets">
+            <li><strong>Build:</strong> implemented an MCP-compliant server to expose tools safely to LLM agents with LangChain + LangGraph integrations.</li>
+            <li><strong>Research:</strong> instrumented agent behavior and tool-selection strategies via WebSocket / JSON-RPC observability.</li>
+            <li><strong>Eval:</strong> benchmarked latency, throughput, and tool-call reliability under simulated workloads for reproducible experiments.</li>
+          </ul>
+
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/MCP" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <!--
+        <article class="card">
+          <h3>Stock Forecasting (Robustness-Oriented Time Series)</h3>
+          <div class="meta">
+            <span class="tag">Time Series</span>
+            <span class="tag">Generalization</span>
+            <span class="tag">Baselines</span>
+          </div>
+          <p>
+            Literature review + implementations of deep learning and statistical baselines with careful evaluation.
+          </p>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/stock_forecast" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+        -->
+      </div>
     </section>
 
-    <section>
-      <div class="section-title">
-        <div class="label">Notes</div>
-        <div>
-          <h2>Reading notes and replications</h2>
-          <p>I keep short notes on papers and ideas that I want to turn into experiments. They are usually more useful than polished summaries because they keep the open questions visible.</p>
-        </div>
+    <section id="safety">
+      <div class="section-head">
+        <h2>AI Safety & Alignment Work</h2>
       </div>
 
-      <div class="mini-list">
-        <div class="mini-block">
-          <h3>Alignment evaluation</h3>
-          <p>Truthfulness, robustness, jailbreak resistance, and how to evaluate them without fooling yourself.</p>
-        </div>
-        <div class="mini-block">
-          <h3>Preference optimization</h3>
-          <p>RLHF, reward modeling, PPO variants, and lower-data alternatives such as GRPO.</p>
-        </div>
-        <div class="mini-block">
-          <h3>Interpretability</h3>
-          <p>Overviews, small experiments, and intervention ideas around sparse representations and feature steering.</p>
-        </div>
-        <div class="mini-block">
-          <h3>Repository</h3>
-          <p><a class="inline-link" href="https://github.com/IdrissPro/research-notes" target="_blank" rel="noreferrer">Open research notes</a></p>
-        </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Causal AI Safety with Sparse Autoencoders (SAEs) on Open LLMs (in progress)</h3>
+          <div class="meta">
+            <span class="tag">In progress</span>
+            <span class="tag">Interpretability</span>
+            <span class="tag">SAEs</span>
+            <span class="tag">Causal Interventions</span>
+            <span class="tag">Jailbreak Safety</span>
+          </div>
+
+          <ul class="bullets">
+            <li><strong>Goal:</strong> identify interpretable latent “risk features” (e.g., jailbreak / harmful intent) in open, quantized LLMs.</li>
+            <li><strong>Method:</strong> use pretrained SAE suites to extract latent features; auto-label + cluster candidates from top-activating prompts.</li>
+            <li><strong>Interventions:</strong> suppress/steer features at inference and measure safety–utility trade-offs on a compact HarmBench-style prompt set.</li>
+            <li><strong>Deliverable:</strong> reproducible feature cards + evaluation results.</li>
+          </ul>
+
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/ai-safety-sae" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes">
+      <div class="section-head">
+        <h2>Research Notes & Replications</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card wide">
+          <h3>Reading List (AI Safety / Alignment)</h3>
+          <p>
+            Folder with concise markdown notes: key ideas, assumptions,
+            failure modes, and proposed experiments.
+          </p>
+          <ul class="bullets">
+            <li>Alignment evaluation (truthfulness, robustness, jailbreaks)</li>
+            <li>RLHF / preference optimization (PPO variants, GRPO, reward modeling)</li>
+            <li>Interpretability overviews + small experiments</li>
+          </ul>
+          <div class="actions">
+            <a class="github-btn" href="https://github.com/IdrissPro/research-notes" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Idriss Louzi</div>
-      <div><a class="inline-link" href="#top">Back to top</a></div>
+      <div>© <span id="year"></span> Idriss</div>
+      <div><a class="link" href="#top">Back to top</a></div>
     </footer>
-  </main>
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
 
 
 
