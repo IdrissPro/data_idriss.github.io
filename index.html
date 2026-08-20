@@ -413,9 +413,9 @@
       <section class="section" id="safety">
         <div class="section-heading">
           <div class="section-kicker">01 / AI Safety</div>
-          <h2>Research on control, monitoring and model internals.</h2>
+          <h2>Research on control, evals and model internals.</h2>
           <p>
-            This is the work I want to spend most of my time on. My current projects combine behavioral evaluation with signals from inside the model, and ask where each approach fails.
+            This is the work I am spending most of my time on. My current projects combine behavioral evaluation with signals from inside the model, and ask where each approach fails.
           </p>
         </div>
 
@@ -428,10 +428,10 @@
           <div class="project-body">
             <h3>Activation-Aware AI Control for Untrusted Coding Agents</h3>
             <p class="lede">
-              A small AI-control testbed for asking whether activation monitoring can catch suspicious coding-agent behavior that code-only monitors miss, and whether combining the two improves safety at a fixed audit budget.
+              An AI-control testbed for asking whether activation monitoring can catch suspicious coding-agent behavior that code-only monitors miss and whether combining the two improves safety at a fixed audit budget.
             </p>
             <ul>
-              <li>Built a 50-task benchmark with clean, toy-backdoored and hard-negative solutions, using public and hidden tests to verify labels by execution.</li>
+              <li>Built a benchmark with clean, toy-backdoored and hard-negative solutions, using public and hidden tests to verify labels by execution.</li>
               <li>Compared static and LLM-based behavioral monitors with probes trained on hidden-state activations from an open coding model.</li>
               <li>Implemented combined monitoring and audit protocols, including held-out backdoor families to test robustness under distribution shift.</li>
               <li>Designed the pipeline to make safety–usefulness trade-offs and monitor failure modes easy to inspect rather than hiding them behind a single aggregate score.</li>
@@ -489,7 +489,7 @@
           </article>
 
           <article class="compact-project">
-            <h3>AI Agent Security — Governed Finance Ops Copilot</h3>
+            <h3>AI Agent Security</h3>
             <p>
               An eval-first AI agent platform for regulated banking, designed around governed tool use: role-based permissions, risk classification, human approval gates, audit trails, PII redaction, prompt-injection defenses, and regression safety evaluations.
             </p>
